@@ -1,0 +1,59 @@
+import turtle
+import math as mt
+import scipy as sp
+
+def move(x, y):
+	
+	turtle.up()
+	turtle.forward(x)
+	turtle.left(90)
+	turtle.forward(y)
+	turtle.right(90)
+	turtle.down()
+
+def polar_move(r, theta):
+	""" move to a position in polar coordinates """
+
+	turtle.up()
+	turtle.left(theta)
+	turtle.forward(r)
+	turtle.right(theta)
+	turtle.down()
+
+def square(size, angle):
+	""" draw a square of size lenght rotated by an angle"""
+
+	turtle.left(angle)
+	turtle.forward(size)
+	turtle.left(90)
+	turtle.forward(size)
+	turtle.left(90)
+	turtle.forward(size)
+	turtle.left(90)
+	turtle.forward(size)
+	turtle.left(90 - angle)
+
+def center_square(size, angle, center):
+	""" draw a square of size lenght rotated by an angle and centered at position"""
+
+	move(center[0] - (size/mt.sqrt(2))*mt.cos(sp.pi/4 + mt.radians(angle)) , center[1] - (size/mt.sqrt(2))*mt.sin(sp.pi/4 + mt.radians(angle)))
+
+	square(size, angle)
+
+def nested_squares(size, angle, center):
+	"""   """
+
+	center_square(size, angle, center)
+
+	polar_move(size/2, angle)
+
+	center_square(size/mt.sqrt(2), angle + 45, center)
+
+
+
+
+if __name__ == "__main__":
+	#move(25, 30)
+	position = (100, 20) 
+	nested_squares(300, 27, position)
+	turtle.exitonclick()
