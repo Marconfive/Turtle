@@ -42,20 +42,20 @@ def center_square(size, angle, center):
 
 	square(size, angle)
 
-def nested_squares(size, angle, center):
+def nested_squares(size, angle, center, n: int = 2):
 	"""   """
+	for i in range(n):
+		current_size = size/(mt.sqrt(2)**i)
+		current_angle = angle + 45*i
+	
+		center_square(current_size, current_angle, center)
 
-	center_square(size, angle, center)
-
-	#polar_move(size/2, angle)
-
-	center_square(size/mt.sqrt(2), angle + 45, center)
 
 
 
 
 if __name__ == "__main__":
 	#move(25, 30)
-	position = (100, 20) 
-	nested_squares(300, 27, position)
+	position = (-100, -87) 
+	nested_squares(800, 137, position, 20)
 	turtle.exitonclick()
