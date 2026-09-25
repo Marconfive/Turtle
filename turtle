@@ -35,8 +35,10 @@ def square(size, angle):
 
 def center_square(size, angle, center):
 	""" draw a square of size lenght rotated by an angle and centered at position"""
+	
+	start_pos = turtle.position()
 
-	move(center[0] - (size/mt.sqrt(2))*mt.cos(sp.pi/4 + mt.radians(angle)) , center[1] - (size/mt.sqrt(2))*mt.sin(sp.pi/4 + mt.radians(angle)))
+	move(center[0] - start_pos[0] - (size/mt.sqrt(2))*mt.cos(sp.pi/4 + mt.radians(angle)) , center[1] - start_pos[1] - (size/mt.sqrt(2))*mt.sin(sp.pi/4 + mt.radians(angle)))
 
 	square(size, angle)
 
@@ -45,7 +47,7 @@ def nested_squares(size, angle, center):
 
 	center_square(size, angle, center)
 
-	polar_move(size/2, angle)
+	#polar_move(size/2, angle)
 
 	center_square(size/mt.sqrt(2), angle + 45, center)
 
